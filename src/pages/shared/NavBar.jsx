@@ -30,6 +30,14 @@ const NavBar = () => {
           Add Job
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          className="text-gray-800 font-medium mr-2 px-4 py-2 rounded-md hover:bg-blue-100 hover:text-blue-600 transition-all duration-200"
+          to="/myPostedJob"
+        >
+          My Posted Job
+        </NavLink>
+      </li>
     </>
   );
 

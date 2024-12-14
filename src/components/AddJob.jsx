@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../Provider/AuthProvider";
+import useAuth from "../hooks/useAuth";
 
 const AddJob = () => {
-  // const { user } = useAuth;
-  const { user } = useContext(AuthContext);
+  const { user } = useAuth();
+  // const { user } = useContext(AuthContext);
   console.log(user);
+  const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -36,6 +38,7 @@ const AddJob = () => {
             confirmButtonText: "Cool",
           });
           form.reset();
+          navigate("/myPostedJob");
         }
       });
   };
