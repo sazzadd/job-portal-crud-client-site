@@ -81,9 +81,7 @@ const MyPostedJob = () => {
                     <Link to={`/viewApplications/${job._id}`}>
                       <button
                         className="px-4 py-2 text-sm text-white bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 rounded-lg shadow-md focus:outline-none transition-all duration-300"
-                        onClick={() =>
-                          console.log("View details for", job.title)
-                        }
+                        
                       >
                         View Details
                       </button>

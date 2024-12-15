@@ -6,18 +6,18 @@ import useAuth from "../hooks/useAuth";
 const AddJob = () => {
   const { user } = useAuth();
   // const { user } = useContext(AuthContext);
-  console.log(user);
+
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const jobData = Object.fromEntries(formData.entries());
-    console.log("Job Data:", jobData);
+
     const { min, max, currency, ...newJob } = jobData;
     newJob.salaryRange = { min, max, currency };
     newJob.requirements = newJob.requirements.split("\n");
     newJob.responsibilities = newJob.responsibilities.split("\n");
-    console.log(newJob);
+
 
     // send data to server
     fetch("http://localhost:5000/jobs", {
@@ -29,7 +29,7 @@ const AddJob = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+
         if (data.insertedId) {
           Swal.fire({
             title: "success!",

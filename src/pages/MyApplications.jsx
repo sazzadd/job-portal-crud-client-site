@@ -11,7 +11,7 @@ const MyApplications = () => {
       .then((data) => setJobs(data));
   }, [user.email]);
 
-  console.log(jobs);
+
 
   return (
     <div className="min-h-screen bg-blue-50 py-10 px-5">

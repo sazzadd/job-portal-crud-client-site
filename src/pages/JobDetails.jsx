@@ -10,7 +10,7 @@ import { Link, useLoaderData } from "react-router-dom";
 
 const JobDetails = () => {
   const job = useLoaderData();
-  console.log(job);
+
   const {
     _id,
     company,

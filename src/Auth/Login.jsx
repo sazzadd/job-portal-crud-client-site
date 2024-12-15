@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useContext, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible, AiOutlineLock } from "react-icons/ai";
 import { MdEmail } from "react-icons/md";
@@ -49,13 +50,19 @@ const Login = () => {
     // Firebase Authentication
     userLogin(email, password)
       .then((result) => {
-        const user = result.user;
-        if (user) {
-          toast.success("Login successful!");
-          setTimeout(() => {
-            navigate("/");
-          }, 2000);
-        }
+        // const user = result.user;
+
+        console.log(result.user.email);
+        const user = { email: email };
+        axios.post("http://localhost:5000/jwt", user,{withCredentials:true}).then((res) => {
+          console.log(res.data);
+        });
+        // if (user) {
+        //   toast.success("Login successful!");
+        //   setTimeout(() => {
+        //     navigate("/");
+        //   }, 2000);
+        // }
       })
       .catch((err) => {
         setError({ ...error, login: err.code });

@@ -6,16 +6,16 @@ import useAuth from "../hooks/useAuth";
 const JobApply = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-  console.log(id);
+
   const { user } = useAuth();
-  console.log(id, user);
+
   const handleSubmitJobApplication = (e) => {
     e.preventDefault();
     const form = e.target;
     const linkdin = form.linkdin.value;
     const github = form.github.value;
     const resume = form.resume.value;
-    console.log(linkdin, github, resume);
+
     const jobApplication = {
       job_id: id,
       apllicant_email: user.email,
@@ -32,7 +32,7 @@ const JobApply = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+
         if (data.insertedId) {
           Swal.fire({
             title: "success!",
