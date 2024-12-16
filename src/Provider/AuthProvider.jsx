@@ -10,6 +10,7 @@ import {
 
 import React, { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
@@ -52,6 +53,12 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      console.log("state capture ", currentUser?.email);
+      if (currentUser?.email) {
+        const user = { email: currentUser.email };
+        axios.post('')
+      }
+
       setLoading(false);
     });
 

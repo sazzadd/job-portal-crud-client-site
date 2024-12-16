@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 
@@ -9,11 +10,10 @@ const MyApplications = () => {
     // fetch(`http://localhost:5000/job-applications?email=${user.email}`)
     //   .then((res) => res.json())
     //   .then((data) => setJobs(data));
-    axios.get()
-    .then(res => res.data)
+    axios
+      .get(`http://localhost:5000/job-applications?email=${user.email}`,{withCredentials:true})
+      .then((res) => console.log(setJobs(res.data)));
   }, [user.email]);
-
-
 
   return (
     <div className="min-h-screen bg-blue-50 py-10 px-5">
@@ -22,7 +22,9 @@ const MyApplications = () => {
       </h1>
 
       {jobs.length === 0 ? (
-        <div className="text-center text-gray-500">No applications found. Start applying for your dream job!</div>
+        <div className="text-center text-gray-500">
+          No applications found. Start applying for your dream job!
+        </div>
       ) : (
         <div className="overflow-x-auto shadow-lg bg-white rounded-lg">
           <table className="table-auto w-full border-collapse">
@@ -41,9 +43,13 @@ const MyApplications = () => {
               {jobs.map((job, index) => (
                 <tr
                   key={job._id}
-                  className={`hover:bg-blue-50 ${index % 2 === 0 ? "bg-white" : "bg-blue-50"}`}
+                  className={`hover:bg-blue-50 ${
+                    index % 2 === 0 ? "bg-white" : "bg-blue-50"
+                  }`}
                 >
-                  <td className="border px-4 py-3 text-gray-700 text-center">{index + 1}</td>
+                  <td className="border px-4 py-3 text-gray-700 text-center">
+                    {index + 1}
+                  </td>
                   <td className="border px-4 py-3 text-gray-700">
                     <div className="flex items-center gap-4">
                       <div className="avatar">
@@ -52,13 +58,21 @@ const MyApplications = () => {
                         </div>
                       </div>
                       <div>
-                        <div className="font-semibold text-lg text-blue-800">{job.title}</div>
-                        <div className="text-sm text-gray-500">{job.location}</div>
+                        <div className="font-semibold text-lg text-blue-800">
+                          {job.title}
+                        </div>
+                        <div className="text-sm text-gray-500">
+                          {job.location}
+                        </div>
                       </div>
                     </div>
                   </td>
-                  <td className="border px-4 py-3 text-gray-700">{job.category}</td>
-                  <td className="border px-4 py-3 text-gray-700">{job.jobType}</td>
+                  <td className="border px-4 py-3 text-gray-700">
+                    {job.category}
+                  </td>
+                  <td className="border px-4 py-3 text-gray-700">
+                    {job.jobType}
+                  </td>
                   <td className="border px-4 py-3 text-center">
                     <button className="btn btn-sm bg-blue-500 hover:bg-blue-600 text-white rounded-md">
                       View Details

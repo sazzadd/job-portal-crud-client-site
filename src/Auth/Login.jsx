@@ -56,6 +56,8 @@ const Login = () => {
         const user = { email: email };
         axios.post("http://localhost:5000/jwt", user,{withCredentials:true}).then((res) => {
           console.log(res.data);
+          toast.success("Login successful!");
+          navigate("/");
         });
         // if (user) {
         //   toast.success("Login successful!");
