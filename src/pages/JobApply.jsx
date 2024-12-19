@@ -23,7 +23,7 @@ const JobApply = () => {
       github,
       resume,
     };
-    fetch("http://localhost:5000/job-applications", {
+    fetch("https://server-site-job-portal.vercel.app/job-applications", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -32,7 +32,6 @@ const JobApply = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-
         if (data.insertedId) {
           Swal.fire({
             title: "success!",

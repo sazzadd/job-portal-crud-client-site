@@ -8,7 +8,7 @@ const MyPostedJob = () => {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/jobs?email=${user.email}`)
+    fetch(`https://server-site-job-portal.vercel.app/jobs?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         if (Array.isArray(data)) {
@@ -79,10 +79,7 @@ const MyPostedJob = () => {
 
                   <td className="px-4 py-3 text-center">
                     <Link to={`/viewApplications/${job._id}`}>
-                      <button
-                        className="px-4 py-2 text-sm text-white bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 rounded-lg shadow-md focus:outline-none transition-all duration-300"
-                        
-                      >
+                      <button className="px-4 py-2 text-sm text-white bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 rounded-lg shadow-md focus:outline-none transition-all duration-300">
                         View Details
                       </button>
                     </Link>

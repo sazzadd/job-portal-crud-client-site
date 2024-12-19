@@ -18,9 +18,8 @@ const AddJob = () => {
     newJob.requirements = newJob.requirements.split("\n");
     newJob.responsibilities = newJob.responsibilities.split("\n");
 
-
     // send data to server
-    fetch("http://localhost:5000/jobs", {
+    fetch("https://server-site-job-portal.vercel.app/jobs", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -29,7 +28,6 @@ const AddJob = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-
         if (data.insertedId) {
           Swal.fire({
             title: "success!",
